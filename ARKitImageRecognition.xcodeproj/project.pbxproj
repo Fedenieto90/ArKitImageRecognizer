@@ -140,7 +140,7 @@
 				TargetAttributes = {
 					3929C4871E89EC2C00E00B60 = {
 						CreatedOnToolsVersion = 9.0;
-						DevelopmentTeam = UPF8Q47HPZ;
+						DevelopmentTeam = 4PUW4LLWZC;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
@@ -326,10 +326,10 @@
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UPF8Q47HPZ;
+				DEVELOPMENT_TEAM = 4PUW4LLWZC;
 				INFOPLIST_FILE = "$(SRCROOT)/ARKitImageRecognition/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.fede.ARKitImageRecognition;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lateralview.ARKitImageRecognition;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -346,10 +346,10 @@
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UPF8Q47HPZ;
+				DEVELOPMENT_TEAM = 4PUW4LLWZC;
 				INFOPLIST_FILE = "$(SRCROOT)/ARKitImageRecognition/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.fede.ARKitImageRecognition;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lateralview.ARKitImageRecognition;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
