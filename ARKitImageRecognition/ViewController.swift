@@ -138,7 +138,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             return
         }
         
-        let videoNode = SKVideoNode(fileNamed: "MANO_OJO.mov")
+        let videoNode = SKVideoNode(fileNamed: "Plane.mov")
         videoNode.play()
         
         let skScene = SKScene(size: CGSize(width: 640, height: 480))

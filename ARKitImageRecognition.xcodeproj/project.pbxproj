@@ -13,6 +13,8 @@
 		3929C4931E89EC2C00E00B60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3929C4921E89EC2C00E00B60 /* Assets.xcassets */; };
 		39D8DC1B1E8ADAE600386B05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39D8DC1A1E8ADAE600386B05 /* LaunchScreen.storyboard */; };
 		8B3240D02114D3B5009B6730 /* MANO_OJO.mov in Resources */ = {isa = PBXBuildFile; fileRef = 8B3240CF2114D3B5009B6730 /* MANO_OJO.mov */; };
+		8B5F86C52118DE30006B24DB /* Plane.mov in Resources */ = {isa = PBXBuildFile; fileRef = 8B5F86C32118DE2D006B24DB /* Plane.mov */; };
+		8B5F86C62118DE30006B24DB /* Star.mov in Resources */ = {isa = PBXBuildFile; fileRef = 8B5F86C42118DE30006B24DB /* Star.mov */; };
 		C41366B91EB80DD400EC054A /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41366B81EB80DD400EC054A /* StatusViewController.swift */; };
 		C8C12A711F29277B00B011FE /* ViewController+ARSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C12A701F29277B00B011FE /* ViewController+ARSessionDelegate.swift */; };
 /* End PBXBuildFile section */
@@ -27,6 +29,8 @@
 		3929C4971E89EC2C00E00B60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39D8DC1A1E8ADAE600386B05 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B3240CF2114D3B5009B6730 /* MANO_OJO.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = MANO_OJO.mov; sourceTree = "<group>"; };
+		8B5F86C32118DE2D006B24DB /* Plane.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Plane.mov; sourceTree = "<group>"; };
+		8B5F86C42118DE30006B24DB /* Star.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Star.mov; sourceTree = "<group>"; };
 		C14378D0C14383A000000001 /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
 		C16CC420C16CC45000000001 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		C41366B81EB80DD400EC054A /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				8B3240CF2114D3B5009B6730 /* MANO_OJO.mov */,
+				8B5F86C32118DE2D006B24DB /* Plane.mov */,
+				8B5F86C42118DE30006B24DB /* Star.mov */,
 			);
 			path = Videos;
 			sourceTree = "<group>";
@@ -184,6 +190,8 @@
 				3929C4931E89EC2C00E00B60 /* Assets.xcassets in Resources */,
 				8B3240D02114D3B5009B6730 /* MANO_OJO.mov in Resources */,
 				3929C4911E89EC2C00E00B60 /* Main.storyboard in Resources */,
+				8B5F86C62118DE30006B24DB /* Star.mov in Resources */,
+				8B5F86C52118DE30006B24DB /* Plane.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
