@@ -1,0 +1,6 @@
+framework module Pods_ARKitImageRecognition {
+  umbrella header "Pods-ARKitImageRecognition-umbrella.h"
+
+  export *
+  module * { export * }
+}

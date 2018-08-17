@@ -22,7 +22,7 @@ class MyVideoScene: SKScene {
         
         //  override func didMove(to view: SKView) {
         
-        guard let url = Bundle.main.url(forResource: "Fire", withExtension: "mp4") else {
+        guard let url = Bundle.main.url(forResource: "MuseoMarAnimacion", withExtension: "mov") else {
             print("Can't find example video")
             return
         }
@@ -32,6 +32,9 @@ class MyVideoScene: SKScene {
         player = AVQueuePlayer(playerItem: playerItem)
         playerLooper = AVPlayerLooper(player: player as! AVQueuePlayer, templateItem: playerItem)
         
+        //let playerLayer = AVPlayerLayer(player: player)
+        //playerLayer.videoGravity = .resizeAspectFill
+        
         // Getting the size of our video
         let videoTrack = playerItem.asset.tracks(withMediaType: .video).first!
         let videoSize = videoTrack.naturalSize
@@ -39,8 +42,7 @@ class MyVideoScene: SKScene {
         // Adding a `SKVideoNode` to display video in our scene
         let videoNode = SKVideoNode(avPlayer: player)
         videoNode.position = CGPoint(x: frame.midX, y: frame.midY)
-        videoNode.size = videoSize.applying(CGAffineTransform(scaleX: 1.0, y: 0.5))
-        
+        videoNode.size = videoSize.applying(CGAffineTransform(scaleX: 1.0, y: 0.75))
         
         // Let's make it transparent, using an SKEffectNode,
         // since a shader cannot be applied to a SKVideoNode directly

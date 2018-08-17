@@ -12,12 +12,18 @@
 		3929C4911E89EC2C00E00B60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3929C48F1E89EC2C00E00B60 /* Main.storyboard */; };
 		3929C4931E89EC2C00E00B60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3929C4921E89EC2C00E00B60 /* Assets.xcassets */; };
 		39D8DC1B1E8ADAE600386B05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39D8DC1A1E8ADAE600386B05 /* LaunchScreen.storyboard */; };
+		8B28266021273F68001518CE /* MuseoMarAnimacion.mov in Resources */ = {isa = PBXBuildFile; fileRef = 8B28265F21273F68001518CE /* MuseoMarAnimacion.mov */; };
 		8B3240D02114D3B5009B6730 /* MANO_OJO.mov in Resources */ = {isa = PBXBuildFile; fileRef = 8B3240CF2114D3B5009B6730 /* MANO_OJO.mov */; };
 		8B47FDBF211D37C5006B747D /* MyVideoScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B47FDBE211D37C5006B747D /* MyVideoScene.swift */; };
 		8B47FDC5211D4371006B747D /* Fire.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8B47FDC4211D4371006B747D /* Fire.mp4 */; };
 		8B5F86C52118DE30006B24DB /* Plane.mov in Resources */ = {isa = PBXBuildFile; fileRef = 8B5F86C32118DE2D006B24DB /* Plane.mov */; };
+		8B67BC99211FA42F00DD25DC /* heart.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B67BC98211FA42F00DD25DC /* heart.json */; };
+		8B67BC9B211FA48700DD25DC /* love_explosion.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B67BC9A211FA48700DD25DC /* love_explosion.json */; };
+		8B808232211FC0E900F66AB8 /* confetti.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B808231211FC0E800F66AB8 /* confetti.json */; };
+		8B808234211FC54000F66AB8 /* loader.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B808233211FC53F00F66AB8 /* loader.json */; };
 		C41366B91EB80DD400EC054A /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41366B81EB80DD400EC054A /* StatusViewController.swift */; };
 		C8C12A711F29277B00B011FE /* ViewController+ARSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C12A701F29277B00B011FE /* ViewController+ARSessionDelegate.swift */; };
+		F37E3B87CD286ADB39863716 /* Pods_ARKitImageRecognition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE4247C099AD07CCE3CF41F6 /* Pods_ARKitImageRecognition.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,14 +35,22 @@
 		3929C4921E89EC2C00E00B60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3929C4971E89EC2C00E00B60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39D8DC1A1E8ADAE600386B05 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8B28265F21273F68001518CE /* MuseoMarAnimacion.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = MuseoMarAnimacion.mov; sourceTree = "<group>"; };
 		8B3240CF2114D3B5009B6730 /* MANO_OJO.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = MANO_OJO.mov; sourceTree = "<group>"; };
 		8B47FDBE211D37C5006B747D /* MyVideoScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVideoScene.swift; sourceTree = "<group>"; };
 		8B47FDC4211D4371006B747D /* Fire.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fire.mp4; sourceTree = "<group>"; };
 		8B5F86C32118DE2D006B24DB /* Plane.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Plane.mov; sourceTree = "<group>"; };
+		8B67BC98211FA42F00DD25DC /* heart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = heart.json; sourceTree = "<group>"; };
+		8B67BC9A211FA48700DD25DC /* love_explosion.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = love_explosion.json; sourceTree = "<group>"; };
+		8B808231211FC0E800F66AB8 /* confetti.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = confetti.json; sourceTree = "<group>"; };
+		8B808233211FC53F00F66AB8 /* loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loader.json; sourceTree = "<group>"; };
+		AEF4F70B7C6733BD95917499 /* Pods-ARKitImageRecognition.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARKitImageRecognition.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARKitImageRecognition/Pods-ARKitImageRecognition.release.xcconfig"; sourceTree = "<group>"; };
+		B2278A3EB3A62B259712CE5E /* Pods-ARKitImageRecognition.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARKitImageRecognition.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARKitImageRecognition/Pods-ARKitImageRecognition.debug.xcconfig"; sourceTree = "<group>"; };
 		C14378D0C14383A000000001 /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
 		C16CC420C16CC45000000001 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		C41366B81EB80DD400EC054A /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
 		C8C12A701F29277B00B011FE /* ViewController+ARSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+ARSessionDelegate.swift"; sourceTree = "<group>"; };
+		FE4247C099AD07CCE3CF41F6 /* Pods_ARKitImageRecognition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARKitImageRecognition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F37E3B87CD286ADB39863716 /* Pods_ARKitImageRecognition.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +93,8 @@
 				3929C4891E89EC2C00E00B60 /* Products */,
 				C14382D0C143840000000001 /* Configuration */,
 				C16C1080C16BFB2000000001 /* LICENSE */,
+				B544C8BCFB502CE4DC9F1DF6 /* Pods */,
+				C5DB69B1805C1F449F3F68D1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,11 +122,25 @@
 		8B3240CE2114D3A9009B6730 /* Videos */ = {
 			isa = PBXGroup;
 			children = (
+				8B67BC9A211FA48700DD25DC /* love_explosion.json */,
+				8B808233211FC53F00F66AB8 /* loader.json */,
+				8B808231211FC0E800F66AB8 /* confetti.json */,
+				8B67BC98211FA42F00DD25DC /* heart.json */,
+				8B28265F21273F68001518CE /* MuseoMarAnimacion.mov */,
 				8B3240CF2114D3B5009B6730 /* MANO_OJO.mov */,
 				8B47FDC4211D4371006B747D /* Fire.mp4 */,
 				8B5F86C32118DE2D006B24DB /* Plane.mov */,
 			);
 			path = Videos;
+			sourceTree = "<group>";
+		};
+		B544C8BCFB502CE4DC9F1DF6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B2278A3EB3A62B259712CE5E /* Pods-ARKitImageRecognition.debug.xcconfig */,
+				AEF4F70B7C6733BD95917499 /* Pods-ARKitImageRecognition.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		C14382D0C143840000000001 /* Configuration */ = {
@@ -128,6 +159,14 @@
 			path = LICENSE;
 			sourceTree = "<group>";
 		};
+		C5DB69B1805C1F449F3F68D1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FE4247C099AD07CCE3CF41F6 /* Pods_ARKitImageRecognition.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +174,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3929C49A1E89EC2C00E00B60 /* Build configuration list for PBXNativeTarget "ARKitImageRecognition" */;
 			buildPhases = (
+				3C06FD25857581AED1A1EBB0 /* [CP] Check Pods Manifest.lock */,
 				3929C4841E89EC2C00E00B60 /* Sources */,
 				3929C4851E89EC2C00E00B60 /* Frameworks */,
 				3929C4861E89EC2C00E00B60 /* Resources */,
+				328145BFE480620172FA19DA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -190,15 +231,59 @@
 			buildActionMask = 2147483647;
 			files = (
 				39D8DC1B1E8ADAE600386B05 /* LaunchScreen.storyboard in Resources */,
+				8B808232211FC0E900F66AB8 /* confetti.json in Resources */,
+				8B28266021273F68001518CE /* MuseoMarAnimacion.mov in Resources */,
+				8B67BC9B211FA48700DD25DC /* love_explosion.json in Resources */,
 				8B47FDC5211D4371006B747D /* Fire.mp4 in Resources */,
+				8B808234211FC54000F66AB8 /* loader.json in Resources */,
 				3929C4931E89EC2C00E00B60 /* Assets.xcassets in Resources */,
 				8B3240D02114D3B5009B6730 /* MANO_OJO.mov in Resources */,
 				3929C4911E89EC2C00E00B60 /* Main.storyboard in Resources */,
+				8B67BC99211FA42F00DD25DC /* heart.json in Resources */,
 				8B5F86C52118DE30006B24DB /* Plane.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		328145BFE480620172FA19DA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ARKitImageRecognition/Pods-ARKitImageRecognition-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ARKitImageRecognition/Pods-ARKitImageRecognition-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3C06FD25857581AED1A1EBB0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ARKitImageRecognition-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3929C4841E89EC2C00E00B60 /* Sources */ = {
@@ -230,7 +315,7 @@
 /* Begin XCBuildConfiguration section */
 		3929C4981E89EC2C00E00B60 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C14378D0C14383A000000001 /* SampleCode.xcconfig */;
+			baseConfigurationReference = B2278A3EB3A62B259712CE5E /* Pods-ARKitImageRecognition.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -290,7 +375,7 @@
 		};
 		3929C4991E89EC2C00E00B60 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C14378D0C14383A000000001 /* SampleCode.xcconfig */;
+			baseConfigurationReference = AEF4F70B7C6733BD95917499 /* Pods-ARKitImageRecognition.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -343,7 +428,7 @@
 		};
 		3929C49B1E89EC2C00E00B60 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C14378D0C14383A000000001 /* SampleCode.xcconfig */;
+			baseConfigurationReference = B2278A3EB3A62B259712CE5E /* Pods-ARKitImageRecognition.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -363,7 +448,7 @@
 		};
 		3929C49C1E89EC2C00E00B60 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C14378D0C14383A000000001 /* SampleCode.xcconfig */;
+			baseConfigurationReference = AEF4F70B7C6733BD95917499 /* Pods-ARKitImageRecognition.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;

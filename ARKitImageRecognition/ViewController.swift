@@ -8,6 +8,7 @@ Main view controller for the AR experience.
 import ARKit
 import SceneKit
 import UIKit
+import Lottie
 
 class ViewController: UIViewController, ARSCNViewDelegate {
     
@@ -110,6 +111,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             
             // Display Video
             if referenceImage.name == "HandEye" {
+                //self.displayVideo(referenceImage: referenceImage, node: node)
+                self.displayLottieAnimation(referenceImage: referenceImage, node: node)
+            } else if referenceImage.name == "AficheMuseoMar" {
                 self.displayVideo(referenceImage: referenceImage, node: node)
             }
 
@@ -150,9 +154,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let plane = SCNPlane(width: referenceImage.physicalSize.width,
                              height: referenceImage.physicalSize.height)
         
-        
+        //Rotate video upside down
         let videoNode = SCNNode(geometry: plane)
         videoNode.eulerAngles.x = -.pi / 2
+        videoNode.eulerAngles.y = .pi
         
         node.addChildNode(videoNode)
         
@@ -161,5 +166,28 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         plane.firstMaterial?.diffuse.contents = scene2d
         
         //self.sceneView.scene.rootNode.addChildNode(videoNode)
+    }
+    
+    func displayLottieAnimation(referenceImage: ARReferenceImage, node: SCNNode) {
+        
+        guard let currentFrame = self.sceneView.session.currentFrame else {
+            return
+        }
+        
+        // create lottie view
+        DispatchQueue.main.async {
+            let animationView = LOTAnimationView(name: "love_explosion")
+            animationView.loopAnimation = true
+            animationView.play()
+            // Create a plane to visualize the initial position of the detected image.
+            let plane = SCNPlane(width: referenceImage.physicalSize.width,
+                                 height: referenceImage.physicalSize.height)
+            
+            plane.firstMaterial?.diffuse.contents = animationView
+            let animationNode = SCNNode(geometry: plane)
+            animationNode.eulerAngles.x = -.pi / 2
+            node.addChildNode(animationNode)
+        }
+    
     }
 }
