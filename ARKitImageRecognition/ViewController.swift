@@ -209,7 +209,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         videoHolder.geometry = videoHolderGeometry
         
         //4. Create Our Video Player
-        if let videoURL = Bundle.main.url(forResource: "MuseoMarAnimacion", withExtension: "mov"){
+        if let videoURL = Bundle.main.url(forResource: "Fire", withExtension: "mp4"){
             setupVideoOnNode(videoHolder, fromURL: videoURL)
         }
         
@@ -236,6 +236,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         videoPlayerNode.position = CGPoint(x: spriteKitScene.size.width/2, y: spriteKitScene.size.height/2)
         videoPlayerNode.size = spriteKitScene.size
         spriteKitScene.addChild(videoPlayerNode)
+        spriteKitScene.backgroundColor = .clear
+        
+        // Chroma key for transparent background
+        applyAlphaChromaKey(forNode: node)
         
         //6. Set The Nodes Geoemtry Diffuse Contenets To Our SpriteKit Scene
         node.geometry?.firstMaterial?.diffuse.contents = spriteKitScene
@@ -243,5 +247,33 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         //5. Play The Video
         videoPlayerNode.play()
         videoPlayer.volume = 0
+    }
+    
+    func applyAlphaChromaKey(forNode node: SCNNode) {
+        let surfaceShader =
+        """
+uniform vec3 c_colorToReplace = vec3(0, 0, 0);
+uniform float c_thresholdSensitivity = 0.05;
+uniform float c_smoothing = 0.0;
+
+#pragma transparent
+#pragma body
+
+vec3 textureColor = _surface.diffuse.rgb;
+
+float maskY = 0.2989 * c_colorToReplace.r + 0.5866 * c_colorToReplace.g + 0.1145 * c_colorToReplace.b;
+float maskCr = 0.7132 * (c_colorToReplace.r - maskY);
+float maskCb = 0.5647 * (c_colorToReplace.b - maskY);
+
+float Y = 0.2989 * textureColor.r + 0.5866 * textureColor.g + 0.1145 * textureColor.b;
+float Cr = 0.7132 * (textureColor.r - Y);
+float Cb = 0.5647 * (textureColor.b - Y);
+
+float blendValue = smoothstep(c_thresholdSensitivity, c_thresholdSensitivity + c_smoothing, distance(vec2(Cr, Cb), vec2(maskCr, maskCb)));
+
+float a = blendValue;
+_surface.transparent.a = a;
+"""
+        node.geometry?.shaderModifiers = [ .surface: surfaceShader ]
     }
 }
