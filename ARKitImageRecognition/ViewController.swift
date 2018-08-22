@@ -107,14 +107,16 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             planeNode.runAction(self.imageHighlightAction)
             
             // Add the plane visualization to the scene.
-            node.addChildNode(planeNode)
+            //node.addChildNode(planeNode)
             
             // Display Video
             if referenceImage.name == "HandEye" {
                 //self.displayVideo(referenceImage: referenceImage, node: node)
-                self.displayLottieAnimation(referenceImage: referenceImage, node: node)
+                self.displayLottieAnimation(referenceImage: referenceImage,
+                                            node: node)
             } else if referenceImage.name == "AficheMuseoMar" {
-                self.displayVideo(referenceImage: referenceImage, node: node)
+                self.displayVideoOverRecognizedImage(referenceImage: referenceImage,
+                                                     node: node)
             }
 
         }
@@ -124,6 +126,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             self.statusViewController.cancelAllScheduledMessages()
             self.statusViewController.showMessage("Detected image “\(imageName)”")
         }
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        print("Updated")
     }
 
     var imageHighlightAction: SCNAction {
@@ -189,5 +195,53 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             node.addChildNode(animationNode)
         }
     
+    }
+    
+    func displayVideoOverRecognizedImage(referenceImage: ARReferenceImage, node: SCNNode) {
+        //2. Get The Physical Width & Height Of Our Reference Image
+        let width = CGFloat(referenceImage.physicalSize.width)
+        let height = CGFloat(referenceImage.physicalSize.height)
+        
+        //3. Create An SCNNode To Hold Our Video Player With The Same Size As The Image Target
+        let videoHolder = SCNNode()
+        let videoHolderGeometry = SCNPlane(width: width, height: height)
+        videoHolder.transform = SCNMatrix4MakeRotation(-Float.pi / 2, 1, 0, 0)
+        videoHolder.geometry = videoHolderGeometry
+        
+        //4. Create Our Video Player
+        if let videoURL = Bundle.main.url(forResource: "MuseoMarAnimacion", withExtension: "mov"){
+            setupVideoOnNode(videoHolder, fromURL: videoURL)
+        }
+        
+        //5. Add It To The Hierarchy
+        node.addChildNode(videoHolder)
+    }
+    
+    /// Creates A Video Player As An SCNGeometries Diffuse Contents
+    func setupVideoOnNode(_ node: SCNNode, fromURL url: URL){
+        
+        //1. Create An SKVideoNode
+        var videoPlayerNode: SKVideoNode!
+        
+        //2. Create An AVPlayer With Our Video URL
+        let videoPlayer = AVPlayer(url: url)
+        
+        //3. Intialize The Video Node With Our Video Player
+        videoPlayerNode = SKVideoNode(avPlayer: videoPlayer)
+        videoPlayerNode.yScale = -1
+        
+        //4. Create A SpriteKitScene & Postion It
+        let spriteKitScene = SKScene(size: CGSize(width: 1024, height: 768))
+        spriteKitScene.scaleMode = .aspectFit
+        videoPlayerNode.position = CGPoint(x: spriteKitScene.size.width/2, y: spriteKitScene.size.height/2)
+        videoPlayerNode.size = spriteKitScene.size
+        spriteKitScene.addChild(videoPlayerNode)
+        
+        //6. Set The Nodes Geoemtry Diffuse Contenets To Our SpriteKit Scene
+        node.geometry?.firstMaterial?.diffuse.contents = spriteKitScene
+        
+        //5. Play The Video
+        videoPlayerNode.play()
+        videoPlayer.volume = 0
     }
 }
