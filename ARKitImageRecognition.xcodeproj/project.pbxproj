@@ -21,6 +21,7 @@
 		8B67BC9B211FA48700DD25DC /* love_explosion.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B67BC9A211FA48700DD25DC /* love_explosion.json */; };
 		8B808232211FC0E900F66AB8 /* confetti.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B808231211FC0E800F66AB8 /* confetti.json */; };
 		8B808234211FC54000F66AB8 /* loader.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B808233211FC53F00F66AB8 /* loader.json */; };
+		8B96EB03212F25EA006EBC2C /* ROL_Connecting.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B96EB02212F25EA006EBC2C /* ROL_Connecting.json */; };
 		C41366B91EB80DD400EC054A /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41366B81EB80DD400EC054A /* StatusViewController.swift */; };
 		C8C12A711F29277B00B011FE /* ViewController+ARSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C12A701F29277B00B011FE /* ViewController+ARSessionDelegate.swift */; };
 		F37E3B87CD286ADB39863716 /* Pods_ARKitImageRecognition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE4247C099AD07CCE3CF41F6 /* Pods_ARKitImageRecognition.framework */; };
@@ -44,6 +45,7 @@
 		8B67BC9A211FA48700DD25DC /* love_explosion.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = love_explosion.json; sourceTree = "<group>"; };
 		8B808231211FC0E800F66AB8 /* confetti.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = confetti.json; sourceTree = "<group>"; };
 		8B808233211FC53F00F66AB8 /* loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loader.json; sourceTree = "<group>"; };
+		8B96EB02212F25EA006EBC2C /* ROL_Connecting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ROL_Connecting.json; sourceTree = "<group>"; };
 		AEF4F70B7C6733BD95917499 /* Pods-ARKitImageRecognition.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARKitImageRecognition.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARKitImageRecognition/Pods-ARKitImageRecognition.release.xcconfig"; sourceTree = "<group>"; };
 		B2278A3EB3A62B259712CE5E /* Pods-ARKitImageRecognition.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARKitImageRecognition.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARKitImageRecognition/Pods-ARKitImageRecognition.debug.xcconfig"; sourceTree = "<group>"; };
 		C14378D0C14383A000000001 /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				8B808233211FC53F00F66AB8 /* loader.json */,
 				8B808231211FC0E800F66AB8 /* confetti.json */,
 				8B67BC98211FA42F00DD25DC /* heart.json */,
+				8B96EB02212F25EA006EBC2C /* ROL_Connecting.json */,
 				8B28265F21273F68001518CE /* MuseoMarAnimacion.mov */,
 				8B3240CF2114D3B5009B6730 /* MANO_OJO.mov */,
 				8B47FDC4211D4371006B747D /* Fire.mp4 */,
@@ -241,6 +244,7 @@
 				3929C4911E89EC2C00E00B60 /* Main.storyboard in Resources */,
 				8B67BC99211FA42F00DD25DC /* heart.json in Resources */,
 				8B5F86C52118DE30006B24DB /* Plane.mov in Resources */,
+				8B96EB03212F25EA006EBC2C /* ROL_Connecting.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

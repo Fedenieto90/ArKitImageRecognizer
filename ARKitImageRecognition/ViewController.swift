@@ -235,11 +235,28 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         spriteKitScene.scaleMode = .aspectFit
         videoPlayerNode.position = CGPoint(x: spriteKitScene.size.width/2, y: spriteKitScene.size.height/2)
         videoPlayerNode.size = spriteKitScene.size
-        spriteKitScene.addChild(videoPlayerNode)
+        //spriteKitScene.addChild(videoPlayerNode)
         spriteKitScene.backgroundColor = .clear
         
-        // Chroma key for transparent background
-        applyAlphaChromaKey(forNode: node)
+        //Chroma key for transparent background
+        //applyAlphaChromaKey(forNode: node)
+        
+        // Let's make it transparent, using an SKEffectNode,
+        // since a shader cannot be applied to a SKVideoNode directly
+        let effectNode = SKEffectNode()
+        // Loving Swift's multiline syntax here:
+        effectNode.shader = SKShader(source: """
+void main() {
+  vec2 texCoords = v_tex_coord;
+  vec2 colorCoords = vec2(texCoords.x, texCoords.y);
+  vec2 alphaCoords = vec2(texCoords.x, texCoords.y);
+  vec4 color = texture2D(u_texture, colorCoords);
+  float alpha = texture2D(u_texture, alphaCoords).r;
+  gl_FragColor = vec4(color.rgb, alpha);
+}
+""")
+        spriteKitScene.addChild(effectNode)
+        effectNode.addChild(videoPlayerNode)
         
         //6. Set The Nodes Geoemtry Diffuse Contenets To Our SpriteKit Scene
         node.geometry?.firstMaterial?.diffuse.contents = spriteKitScene
