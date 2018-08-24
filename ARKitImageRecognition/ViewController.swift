@@ -10,6 +10,24 @@ import SceneKit
 import UIKit
 import Lottie
 
+struct referenceImages {
+    static let handEye = "HandEye"
+    static let aficheMuseoMar = "AficheMuseoMar"
+}
+
+struct lottieAnimations {
+    static let loveExplosion = "love_explosion"
+}
+
+struct videos {
+    static let museoMarAficheAlpha = "MuseoMarAnimacionAlpha"
+}
+
+struct videoExtension {
+    static let mov = "mov"
+    static let mp4 = "mp4"
+}
+
 class ViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet var sceneView: ARSCNView!
@@ -120,11 +138,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             //node.addChildNode(planeNode)
             
             // Display Video
-            if referenceImage.name == "HandEye" {
+            if referenceImage.name == referenceImages.handEye {
                 //self.displayVideo(referenceImage: referenceImage, node: node)
                 self.displayLottieAnimation(referenceImage: referenceImage,
                                             node: node)
-            } else if referenceImage.name == "AficheMuseoMar" {
+            } else if referenceImage.name == referenceImages.aficheMuseoMar {
                 self.displayVideoOverRecognizedImage(referenceImage: referenceImage,
                                                      node: node)
             }
@@ -192,7 +210,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // create lottie view
         DispatchQueue.main.async {
-            let animationView = LOTAnimationView(name: "love_explosion")
+            let animationView = LOTAnimationView(name: lottieAnimations.loveExplosion)
             animationView.loopAnimation = true
             animationView.play()
             // Create a plane to visualize the initial position of the detected image.
@@ -219,7 +237,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         videoHolder.geometry = videoHolderGeometry
         
         //4. Create Our Video Player
-        if let videoURL = Bundle.main.url(forResource: "MuseoMarAnimacionAlpha", withExtension: "mov"){
+        if let videoURL = Bundle.main.url(forResource: videos.museoMarAficheAlpha,
+                                          withExtension: videoExtension.mov) {
             setupVideoOnNode(videoHolder, fromURL: videoURL)
         }
         
