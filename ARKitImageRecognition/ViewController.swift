@@ -281,17 +281,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Let's make it transparent, using an SKEffectNode,
         // since a shader cannot be applied to a SKVideoNode directly
         let effectNode = SKEffectNode()
-        // Loving Swift's multiline syntax here:
-        effectNode.shader = SKShader(source: """
-void main() {
-  vec2 texCoords = v_tex_coord;
-  vec2 colorCoords = vec2(texCoords.x, texCoords.y);
-  vec2 alphaCoords = vec2(texCoords.x, texCoords.y);
-  vec4 color = texture2D(u_texture, colorCoords);
-  float alpha = texture2D(u_texture, alphaCoords).r;
-  gl_FragColor = vec4(color.rgb, alpha);
-}
-""")
+        effectNode.shader = EffectNodeHelper.getAlphaShader()
         spriteKitScene.addChild(effectNode)
         effectNode.addChild(videoPlayerNode)
         

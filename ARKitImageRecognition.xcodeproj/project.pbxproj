@@ -23,6 +23,7 @@
 		8B808234211FC54000F66AB8 /* loader.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B808233211FC53F00F66AB8 /* loader.json */; };
 		8B8DEF82213042A70075DD50 /* MuseoMarAnimacionAlpha.mov in Resources */ = {isa = PBXBuildFile; fileRef = 8B8DEF81213042A70075DD50 /* MuseoMarAnimacionAlpha.mov */; };
 		8B96EB03212F25EA006EBC2C /* ROL_Connecting.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B96EB02212F25EA006EBC2C /* ROL_Connecting.json */; };
+		8BAD8DCF2130A15C00AD2AA9 /* EffectNodeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAD8DCE2130A15C00AD2AA9 /* EffectNodeHelper.swift */; };
 		C41366B91EB80DD400EC054A /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41366B81EB80DD400EC054A /* StatusViewController.swift */; };
 		C8C12A711F29277B00B011FE /* ViewController+ARSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C12A701F29277B00B011FE /* ViewController+ARSessionDelegate.swift */; };
 		F37E3B87CD286ADB39863716 /* Pods_ARKitImageRecognition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE4247C099AD07CCE3CF41F6 /* Pods_ARKitImageRecognition.framework */; };
@@ -48,6 +49,7 @@
 		8B808233211FC53F00F66AB8 /* loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loader.json; sourceTree = "<group>"; };
 		8B8DEF81213042A70075DD50 /* MuseoMarAnimacionAlpha.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = MuseoMarAnimacionAlpha.mov; sourceTree = "<group>"; };
 		8B96EB02212F25EA006EBC2C /* ROL_Connecting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ROL_Connecting.json; sourceTree = "<group>"; };
+		8BAD8DCE2130A15C00AD2AA9 /* EffectNodeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectNodeHelper.swift; sourceTree = "<group>"; };
 		AEF4F70B7C6733BD95917499 /* Pods-ARKitImageRecognition.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARKitImageRecognition.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARKitImageRecognition/Pods-ARKitImageRecognition.release.xcconfig"; sourceTree = "<group>"; };
 		B2278A3EB3A62B259712CE5E /* Pods-ARKitImageRecognition.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARKitImageRecognition.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARKitImageRecognition/Pods-ARKitImageRecognition.debug.xcconfig"; sourceTree = "<group>"; };
 		C14378D0C14383A000000001 /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 		1488324C1EFC3ED00043E0AB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8BAD8DCD2130A14C00AD2AA9 /* Helpers */,
 				8BAD8DCC2130A0FF00AD2AA9 /* Animations */,
 				8B3240CE2114D3A9009B6730 /* Videos */,
 				3929C4921E89EC2C00E00B60 /* Assets.xcassets */,
@@ -146,6 +149,14 @@
 				8B96EB02212F25EA006EBC2C /* ROL_Connecting.json */,
 			);
 			path = Animations;
+			sourceTree = "<group>";
+		};
+		8BAD8DCD2130A14C00AD2AA9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8BAD8DCE2130A15C00AD2AA9 /* EffectNodeHelper.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		B544C8BCFB502CE4DC9F1DF6 /* Pods */ = {
@@ -308,6 +319,7 @@
 			files = (
 				3929C48E1E89EC2C00E00B60 /* ViewController.swift in Sources */,
 				C41366B91EB80DD400EC054A /* StatusViewController.swift in Sources */,
+				8BAD8DCF2130A15C00AD2AA9 /* EffectNodeHelper.swift in Sources */,
 				8B47FDBF211D37C5006B747D /* MyVideoScene.swift in Sources */,
 				C8C12A711F29277B00B011FE /* ViewController+ARSessionDelegate.swift in Sources */,
 				3929C48C1E89EC2C00E00B60 /* AppDelegate.swift in Sources */,
