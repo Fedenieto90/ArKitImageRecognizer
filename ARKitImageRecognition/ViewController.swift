@@ -17,10 +17,18 @@ struct referenceImages {
 
 struct lottieAnimations {
     static let loveExplosion = "love_explosion"
+    static let loader = "loader"
+    static let confetti = "confetti"
+    static let heart = "heart"
+    static let rolConnecting = "ROL_Connecting"
 }
 
 struct videos {
     static let museoMarAficheAlpha = "MuseoMarAnimacionAlpha"
+    static let musoMarAfiche = "MuseoMarAnimacion"
+    static let manoOjo = "MANO_OJO"
+    static let fire = "Fire"
+    static let plane = "Plane"
 }
 
 struct videoExtension {
