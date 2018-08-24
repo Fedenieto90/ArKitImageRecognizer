@@ -209,7 +209,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         videoHolder.geometry = videoHolderGeometry
         
         //4. Create Our Video Player
-        if let videoURL = Bundle.main.url(forResource: "Fire", withExtension: "mp4"){
+        if let videoURL = Bundle.main.url(forResource: "MuseoMarAnimacionAlpha", withExtension: "mov"){
             setupVideoOnNode(videoHolder, fromURL: videoURL)
         }
         
