@@ -264,8 +264,16 @@ void main() {
         //5. Play The Video
         videoPlayerNode.play()
         videoPlayer.volume = 0
+        
+        //6. Loop Video
+        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime,
+                                               object: videoPlayer.currentItem,
+                                               queue: nil) { (_) in
+            videoPlayer.seek(to: kCMTimeZero)
+            videoPlayer.play()
+        }
     }
-    
+
     func applyAlphaChromaKey(forNode node: SCNNode) {
         let surfaceShader =
         """
