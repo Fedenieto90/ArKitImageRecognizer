@@ -8,38 +8,15 @@ Main view controller for the AR experience.
 import ARKit
 import SceneKit
 import UIKit
-import Lottie
 
 struct referenceImages {
     static let handEye = "HandEye"
     static let aficheMuseoMar = "AficheMuseoMar"
 }
 
-struct lottieAnimations {
-    static let loveExplosion = "love_explosion"
-    static let loader = "loader"
-    static let confetti = "confetti"
-    static let heart = "heart"
-    static let rolConnecting = "ROL_Connecting"
-}
-
-struct videos {
-    static let museoMarAficheAlpha = "MuseoMarAnimacionAlpha"
-    static let musoMarAfiche = "MuseoMarAnimacion"
-    static let manoOjo = "MANO_OJO"
-    static let fire = "Fire"
-    static let plane = "Plane"
-}
-
-struct videoExtension {
-    static let mov = "mov"
-    static let mp4 = "mp4"
-}
-
 class ViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet var sceneView: ARSCNView!
-    
     @IBOutlet weak var blurView: UIVisualEffectView!
     
     /// The view controller that displays the status and "restart experience" UI.
@@ -61,6 +38,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Setup sceneView
         sceneView.delegate = self
         sceneView.session.delegate = self
 
@@ -110,6 +88,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
 	}
     
+    
+    // MARK: - Remove all nodes from ARSCNView
     func removeAllNodes() {
         sceneView.scene.rootNode.enumerateChildNodes { (node, stop) in
             node.removeFromParentNode()
@@ -140,32 +120,32 @@ class ViewController: UIViewController, ARSCNViewDelegate {
              Image anchors are not tracked after initial detection, so create an
              animation that limits the duration for which the plane visualization appears.
              */
-            planeNode.runAction(self.imageHighlightAction)
+            planeNode.runAction(self.imageHighlightAction, completionHandler: {
+                if referenceImage.name == referenceImages.handEye {
+                   AnimationHelper.displayLottieAnimation(referenceImage: referenceImage,
+                                                          node: node,
+                                                          animation: lottieAnimations.loveExplosion)
+                } else if referenceImage.name == referenceImages.aficheMuseoMar {
+                    VideoHelper.displayVideo(referenceImage: referenceImage,
+                                             node: node,
+                                             video: videos.museoMarAficheAlpha)
+                }
+            })
             
             // Add the plane visualization to the scene.
-            //node.addChildNode(planeNode)
-            
-            // Display Video
-            if referenceImage.name == referenceImages.handEye {
-                //self.displayVideo(referenceImage: referenceImage, node: node)
-                self.displayLottieAnimation(referenceImage: referenceImage,
-                                            node: node)
-            } else if referenceImage.name == referenceImages.aficheMuseoMar {
-                self.displayVideoOverRecognizedImage(referenceImage: referenceImage,
-                                                     node: node)
-            }
-
+            node.addChildNode(planeNode)
         }
 
+        // Detected Image Message
+        showDetectedImageMessage(referenceImage: referenceImage)
+    }
+    
+    func showDetectedImageMessage(referenceImage: ARReferenceImage) {
         DispatchQueue.main.async {
             let imageName = referenceImage.name ?? ""
             self.statusViewController.cancelAllScheduledMessages()
             self.statusViewController.showMessage("Detected image “\(imageName)”")
         }
-    }
-    
-    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-        print("Updated")
     }
 
     var imageHighlightAction: SCNAction {
@@ -177,155 +157,5 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             .fadeOut(duration: 0.5),
             .removeFromParentNode()
         ])
-    }
-    
-    func displayVideo(referenceImage: ARReferenceImage, node: SCNNode) {
-        
-        guard let currentFrame = self.sceneView.session.currentFrame else {
-            return
-        }
-        
-        let bounds = CGRect(x: 0, y: 0, width: 640, height: 480)
-        let sceneView = SCNView(frame: bounds, options: [:])
-        sceneView.backgroundColor = .black
-        sceneView.allowsCameraControl = true
-        
-        // Create scene
-        let scene = SCNScene()
-        // Create a plane to visualize the initial position of the detected image.
-        let plane = SCNPlane(width: referenceImage.physicalSize.width,
-                             height: referenceImage.physicalSize.height)
-        
-        //Rotate video upside down
-        let videoNode = SCNNode(geometry: plane)
-        videoNode.eulerAngles.x = -.pi / 2
-        videoNode.eulerAngles.y = .pi
-        
-        node.addChildNode(videoNode)
-        
-        let scene2d = MyVideoScene(size: bounds.size)
-        scene2d.backgroundColor = .clear
-        plane.firstMaterial?.diffuse.contents = scene2d
-        
-        //self.sceneView.scene.rootNode.addChildNode(videoNode)
-    }
-    
-    func displayLottieAnimation(referenceImage: ARReferenceImage, node: SCNNode) {
-        
-        guard let currentFrame = self.sceneView.session.currentFrame else {
-            return
-        }
-        
-        // create lottie view
-        DispatchQueue.main.async {
-            let animationView = LOTAnimationView(name: lottieAnimations.loveExplosion)
-            animationView.loopAnimation = true
-            animationView.play()
-            // Create a plane to visualize the initial position of the detected image.
-            let plane = SCNPlane(width: referenceImage.physicalSize.width,
-                                 height: referenceImage.physicalSize.height)
-            
-            plane.firstMaterial?.diffuse.contents = animationView
-            let animationNode = SCNNode(geometry: plane)
-            animationNode.eulerAngles.x = -.pi / 2
-            node.addChildNode(animationNode)
-        }
-    
-    }
-    
-    func displayVideoOverRecognizedImage(referenceImage: ARReferenceImage, node: SCNNode) {
-        //2. Get The Physical Width & Height Of Our Reference Image
-        let width = CGFloat(referenceImage.physicalSize.width)
-        let height = CGFloat(referenceImage.physicalSize.height)
-        
-        //3. Create An SCNNode To Hold Our Video Player With The Same Size As The Image Target
-        let videoHolder = SCNNode()
-        let videoHolderGeometry = SCNPlane(width: width, height: height)
-        videoHolder.transform = SCNMatrix4MakeRotation(-Float.pi / 2, 1, 0, 0)
-        videoHolder.geometry = videoHolderGeometry
-        
-        //4. Create Our Video Player
-        if let videoURL = Bundle.main.url(forResource: videos.museoMarAficheAlpha,
-                                          withExtension: videoExtension.mov) {
-            setupVideoOnNode(videoHolder, fromURL: videoURL)
-        }
-        
-        //5. Add It To The Hierarchy
-        node.addChildNode(videoHolder)
-    }
-    
-    /// Creates A Video Player As An SCNGeometries Diffuse Contents
-    func setupVideoOnNode(_ node: SCNNode, fromURL url: URL){
-        
-        //1. Create An SKVideoNode
-        var videoPlayerNode: SKVideoNode!
-        
-        //2. Create An AVPlayer With Our Video URL
-        let videoPlayer = AVPlayer(url: url)
-        
-        //3. Intialize The Video Node With Our Video Player
-        videoPlayerNode = SKVideoNode(avPlayer: videoPlayer)
-        videoPlayerNode.yScale = -1
-        
-        //4. Create A SpriteKitScene & Postion It
-        let spriteKitScene = SKScene(size: CGSize(width: 1024, height: 768))
-        spriteKitScene.scaleMode = .aspectFit
-        videoPlayerNode.position = CGPoint(x: spriteKitScene.size.width/2, y: spriteKitScene.size.height/2)
-        videoPlayerNode.size = spriteKitScene.size
-        //spriteKitScene.addChild(videoPlayerNode)
-        spriteKitScene.backgroundColor = .clear
-        
-        //Chroma key for transparent background
-        //applyAlphaChromaKey(forNode: node)
-        
-        // Let's make it transparent, using an SKEffectNode,
-        // since a shader cannot be applied to a SKVideoNode directly
-        let effectNode = SKEffectNode()
-        effectNode.shader = EffectNodeHelper.getAlphaShader()
-        spriteKitScene.addChild(effectNode)
-        effectNode.addChild(videoPlayerNode)
-        
-        //6. Set The Nodes Geoemtry Diffuse Contenets To Our SpriteKit Scene
-        node.geometry?.firstMaterial?.diffuse.contents = spriteKitScene
-        
-        //5. Play The Video
-        videoPlayerNode.play()
-        videoPlayer.volume = 0
-        
-        //6. Loop Video
-        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime,
-                                               object: videoPlayer.currentItem,
-                                               queue: nil) { (_) in
-            videoPlayer.seek(to: kCMTimeZero)
-            videoPlayer.play()
-        }
-    }
-
-    func applyAlphaChromaKey(forNode node: SCNNode) {
-        let surfaceShader =
-        """
-uniform vec3 c_colorToReplace = vec3(0, 0, 0);
-uniform float c_thresholdSensitivity = 0.05;
-uniform float c_smoothing = 0.0;
-
-#pragma transparent
-#pragma body
-
-vec3 textureColor = _surface.diffuse.rgb;
-
-float maskY = 0.2989 * c_colorToReplace.r + 0.5866 * c_colorToReplace.g + 0.1145 * c_colorToReplace.b;
-float maskCr = 0.7132 * (c_colorToReplace.r - maskY);
-float maskCb = 0.5647 * (c_colorToReplace.b - maskY);
-
-float Y = 0.2989 * textureColor.r + 0.5866 * textureColor.g + 0.1145 * textureColor.b;
-float Cr = 0.7132 * (textureColor.r - Y);
-float Cb = 0.5647 * (textureColor.b - Y);
-
-float blendValue = smoothstep(c_thresholdSensitivity, c_thresholdSensitivity + c_smoothing, distance(vec2(Cr, Cb), vec2(maskCr, maskCb)));
-
-float a = blendValue;
-_surface.transparent.a = a;
-"""
-        node.geometry?.shaderModifiers = [ .surface: surfaceShader ]
     }
 }
