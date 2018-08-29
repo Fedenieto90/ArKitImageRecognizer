@@ -88,8 +88,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
 	}
     
-    
     // MARK: - Remove all nodes from ARSCNView
+
     func removeAllNodes() {
         sceneView.scene.rootNode.enumerateChildNodes { (node, stop) in
             node.removeFromParentNode()
@@ -140,6 +140,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         showDetectedImageMessage(referenceImage: referenceImage)
     }
     
+    // MARK : - Detected Image Message
+    
     func showDetectedImageMessage(referenceImage: ARReferenceImage) {
         DispatchQueue.main.async {
             let imageName = referenceImage.name ?? ""
@@ -147,6 +149,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             self.statusViewController.showMessage("Detected image “\(imageName)”")
         }
     }
+    
+    // MARK: - Image Highlight
 
     var imageHighlightAction: SCNAction {
         return .sequence([

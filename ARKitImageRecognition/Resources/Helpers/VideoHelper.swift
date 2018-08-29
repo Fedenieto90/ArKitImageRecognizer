@@ -91,7 +91,8 @@ class VideoHelper: NSObject {
         return effectNode
     }
     
-    // MARK: - Loop
+    // MARK: - Loop Video
+    
     static func loopVideo(videoPlayer: AVPlayer, node: SCNNode) {
         NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime,
                                                object: videoPlayer.currentItem,
