@@ -12,6 +12,7 @@ import UIKit
 struct referenceImages {
     static let handEye = "HandEye"
     static let aficheMuseoMar = "AficheMuseoMar"
+    static let homeroMaddona = "HomeroMaddona"
 }
 
 class ViewController: UIViewController, ARSCNViewDelegate {
@@ -77,8 +78,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             fatalError("Missing expected asset catalog resources.")
         }
         
-        let configuration = ARWorldTrackingConfiguration()
-        configuration.detectionImages = referenceImages
+        let configuration = ARImageTrackingConfiguration()
+        configuration.trackingImages = referenceImages
+        configuration.maximumNumberOfTrackedImages = 2
+        //configuration.detectionImages = referenceImages
         session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
         
         //Remove all nodes from the scene
@@ -95,13 +98,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             node.removeFromParentNode()
         }
     }
-
-    // MARK: - ARSCNViewDelegate (Image detection results)
-    /// - Tag: ARImageAnchor-Visualizing
-    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        guard let imageAnchor = anchor as? ARImageAnchor else { return }
-        let referenceImage = imageAnchor.referenceImage
-        updateQueue.async {
+    
+    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
+        let node = SCNNode()
+        if let imageAnchor = anchor as? ARImageAnchor {
+            let referenceImage = imageAnchor.referenceImage
             
             // Create a plane to visualize the initial position of the detected image.
             let plane = SCNPlane(width: referenceImage.physicalSize.width,
@@ -122,9 +123,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
              */
             planeNode.runAction(self.imageHighlightAction, completionHandler: {
                 if referenceImage.name == referenceImages.handEye {
-                   AnimationHelper.displayLottieAnimation(referenceImage: referenceImage,
-                                                          node: node,
-                                                          animation: lottieAnimations.loveExplosion)
+                    AnimationHelper.displayLottieAnimation(referenceImage: referenceImage,
+                                                           node: node,
+                                                           animation: lottieAnimations.loveExplosion)
                 } else if referenceImage.name == referenceImages.aficheMuseoMar {
                     VideoHelper.displayVideo(referenceImage: referenceImage,
                                              node: node,
@@ -134,10 +135,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             
             // Add the plane visualization to the scene.
             node.addChildNode(planeNode)
+            
+            // Detected Image Message
+            showDetectedImageMessage(referenceImage: referenceImage)
         }
+        
+        return node
+    }
 
-        // Detected Image Message
-        showDetectedImageMessage(referenceImage: referenceImage)
+    // MARK: - ARSCNViewDelegate (Image detection results)
+    /// - Tag: ARImageAnchor-Visualizing
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        
     }
     
     // MARK : - Detected Image Message

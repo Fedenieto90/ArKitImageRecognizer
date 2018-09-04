@@ -28,19 +28,19 @@ class VideoHelper: NSObject {
         //2. Get The Physical Width & Height Of Our Reference Image
         let width = CGFloat(referenceImage.physicalSize.width)
         let height = CGFloat(referenceImage.physicalSize.height)
-        
+
         //3. Create An SCNNode To Hold Our Video Player With The Same Size As The Image Target
         let videoHolder = SCNNode()
         let videoHolderGeometry = SCNPlane(width: width, height: height)
         videoHolder.transform = SCNMatrix4MakeRotation(-Float.pi / 2, 1, 0, 0)
         videoHolder.geometry = videoHolderGeometry
-        
+
         //4. Create Our Video Player
         if let videoURL = Bundle.main.url(forResource: videos.museoMarAficheAlpha,
                                           withExtension: videoExtension.mov) {
             setupVideoOnNode(videoHolder, fromURL: videoURL)
         }
-        
+
         //5. Add It To The Hierarchy
         node.addChildNode(videoHolder)
     }
