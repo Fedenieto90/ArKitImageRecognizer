@@ -24,7 +24,7 @@ struct videoExtension {
 
 class VideoHelper: NSObject {
     
-    static func displayVideo(referenceImage: ARReferenceImage, node: SCNNode, video: String) {
+    static func displayVideo(referenceImage: ARReferenceImage, node: SCNNode, video: String, videoExtension: String) {
         //2. Get The Physical Width & Height Of Our Reference Image
         let width = CGFloat(referenceImage.physicalSize.width)
         let height = CGFloat(referenceImage.physicalSize.height)
@@ -36,8 +36,8 @@ class VideoHelper: NSObject {
         videoHolder.geometry = videoHolderGeometry
 
         //4. Create Our Video Player
-        if let videoURL = Bundle.main.url(forResource: videos.museoMarAficheAlpha,
-                                          withExtension: videoExtension.mov) {
+        if let videoURL = Bundle.main.url(forResource: video,
+                                          withExtension: videoExtension) {
             setupVideoOnNode(videoHolder, fromURL: videoURL)
         }
 

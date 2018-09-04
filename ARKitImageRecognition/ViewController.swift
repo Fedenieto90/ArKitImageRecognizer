@@ -123,13 +123,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
              */
             planeNode.runAction(self.imageHighlightAction, completionHandler: {
                 if referenceImage.name == referenceImages.handEye {
-                    AnimationHelper.displayLottieAnimation(referenceImage: referenceImage,
-                                                           node: node,
-                                                           animation: lottieAnimations.loveExplosion)
+                    VideoHelper.displayVideo(referenceImage: referenceImage,
+                                             node: node,
+                                             video: videos.fire,
+                                             videoExtension: videoExtension.mp4)
                 } else if referenceImage.name == referenceImages.aficheMuseoMar {
                     VideoHelper.displayVideo(referenceImage: referenceImage,
                                              node: node,
-                                             video: videos.museoMarAficheAlpha)
+                                             video: videos.museoMarAficheAlpha,
+                                             videoExtension: videoExtension.mov)
                 }
             })
             
