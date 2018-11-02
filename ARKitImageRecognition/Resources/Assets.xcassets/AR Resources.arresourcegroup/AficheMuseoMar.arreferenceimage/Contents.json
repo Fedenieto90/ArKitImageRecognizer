@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "AficheMuseoMar.png"
+      "filename" : "AficheMuseoMar (2).png"
     }
   ],
   "info" : {
@@ -10,7 +10,6 @@
     "author" : "xcode"
   },
   "properties" : {
-    "width" : 29.692695214105793,
-    "unit" : "centimeters"
+    "width" : 0.2970683459277918
   }
 }
