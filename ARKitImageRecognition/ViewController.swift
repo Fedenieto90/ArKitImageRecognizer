@@ -17,6 +17,10 @@ struct referenceImages {
 
 class ViewController: UIViewController, ARSCNViewDelegate {
     
+    private struct Constants {
+        static let ARResources = "AR Resources"
+    }
+    
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var blurView: UIVisualEffectView!
     
@@ -61,7 +65,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 	
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
-
+        
+        // Pause the session
         session.pause()
 	}
 
@@ -74,19 +79,26 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     /// - Tag: ARReferenceImage-Loading
 	func resetTracking() {
         
-        guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else {
+        // Obtain images to recognize
+        
+        guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: Constants.ARResources,
+                                                                     bundle: nil) else {
             fatalError("Missing expected asset catalog resources.")
         }
         
+        // Setup ARSession configuration
+        
         let configuration = ARImageTrackingConfiguration()
         configuration.trackingImages = referenceImages
-        configuration.maximumNumberOfTrackedImages = 2
+        configuration.maximumNumberOfTrackedImages = 1
         //configuration.detectionImages = referenceImages
+        
         session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
         
-        //Remove all nodes from the scene
+        // Remove all nodes from the scene
         removeAllNodes()
-
+        
+        // Show look around to detect images message
         statusViewController.scheduleMessage("Look around to detect images", inSeconds: 7.5, messageType: .contentPlacement)
         
 	}
@@ -94,13 +106,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     // MARK: - Remove all nodes from ARSCNView
 
     func removeAllNodes() {
+        // Remove all nodes from the scene
         sceneView.scene.rootNode.enumerateChildNodes { (node, stop) in
             node.removeFromParentNode()
         }
     }
+
+    // MARK: - ARSCNViewDelegate (Image detection results)
     
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let node = SCNNode()
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         if let imageAnchor = anchor as? ARImageAnchor {
             let referenceImage = imageAnchor.referenceImage
             
@@ -141,14 +155,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             // Detected Image Message
             showDetectedImageMessage(referenceImage: referenceImage)
         }
-        
-        return node
-    }
-
-    // MARK: - ARSCNViewDelegate (Image detection results)
-    /// - Tag: ARImageAnchor-Visualizing
-    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        
     }
     
     // MARK : - Detected Image Message

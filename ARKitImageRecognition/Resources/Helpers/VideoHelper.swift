@@ -24,28 +24,33 @@ struct videoExtension {
 
 class VideoHelper: NSObject {
     
-    static func displayVideo(referenceImage: ARReferenceImage, node: SCNNode, video: String, videoExtension: String) {
-        //2. Get The Physical Width & Height Of Our Reference Image
+    static func displayVideo(referenceImage: ARReferenceImage,
+                             node: SCNNode,
+                             video: String,
+                             videoExtension: String) {
+        
+        //1. Get The Physical Width & Height Of Our Reference Image
         let width = CGFloat(referenceImage.physicalSize.width)
         let height = CGFloat(referenceImage.physicalSize.height)
 
-        //3. Create An SCNNode To Hold Our Video Player With The Same Size As The Image Target
+        //2. Create An SCNNode To Hold Our Video Player With The Same Size As The Image Target
         let videoHolder = SCNNode()
         let videoHolderGeometry = SCNPlane(width: width, height: height)
         videoHolder.transform = SCNMatrix4MakeRotation(-Float.pi / 2, 1, 0, 0)
         videoHolder.geometry = videoHolderGeometry
 
-        //4. Create Our Video Player
+        //3. Create Our Video Player
         if let videoURL = Bundle.main.url(forResource: video,
                                           withExtension: videoExtension) {
             setupVideoOnNode(videoHolder, fromURL: videoURL)
         }
 
-        //5. Add It To The Hierarchy
+        //4. Add It To The Hierarchy
         node.addChildNode(videoHolder)
     }
     
     /// Creates A Video Player As An SCNGeometries Diffuse Contents
+    
     static func setupVideoOnNode(_ node: SCNNode, fromURL url: URL){
         
         //1. Create An SKVideoNode
@@ -101,66 +106,5 @@ class VideoHelper: NSObject {
             videoPlayer.play()
         }
     }
-    
-    // MARK: - Old Methods
-    
-    //    func applyAlphaChromaKey(forNode node: SCNNode) {
-    //        let surfaceShader =
-    //        """
-    //uniform vec3 c_colorToReplace = vec3(0, 0, 0);
-    //uniform float c_thresholdSensitivity = 0.05;
-    //uniform float c_smoothing = 0.0;
-    //
-    //#pragma transparent
-    //#pragma body
-    //
-    //vec3 textureColor = _surface.diffuse.rgb;
-    //
-    //float maskY = 0.2989 * c_colorToReplace.r + 0.5866 * c_colorToReplace.g + 0.1145 * c_colorToReplace.b;
-    //float maskCr = 0.7132 * (c_colorToReplace.r - maskY);
-    //float maskCb = 0.5647 * (c_colorToReplace.b - maskY);
-    //
-    //float Y = 0.2989 * textureColor.r + 0.5866 * textureColor.g + 0.1145 * textureColor.b;
-    //float Cr = 0.7132 * (textureColor.r - Y);
-    //float Cb = 0.5647 * (textureColor.b - Y);
-    //
-    //float blendValue = smoothstep(c_thresholdSensitivity, c_thresholdSensitivity + c_smoothing, distance(vec2(Cr, Cb), vec2(maskCr, maskCb)));
-    //
-    //float a = blendValue;
-    //_surface.transparent.a = a;
-    //"""
-    //        node.geometry?.shaderModifiers = [ .surface: surfaceShader ]
-    //    }
-    
-    //    func displayVideo(referenceImage: ARReferenceImage, node: SCNNode) {
-    //
-    //        guard let currentFrame = self.sceneView.session.currentFrame else {
-    //            return
-    //        }
-    //
-    //        let bounds = CGRect(x: 0, y: 0, width: 640, height: 480)
-    //        let sceneView = SCNView(frame: bounds, options: [:])
-    //        sceneView.backgroundColor = .black
-    //        sceneView.allowsCameraControl = true
-    //
-    //        // Create scene
-    //        let scene = SCNScene()
-    //        // Create a plane to visualize the initial position of the detected image.
-    //        let plane = SCNPlane(width: referenceImage.physicalSize.width,
-    //                             height: referenceImage.physicalSize.height)
-    //
-    //        //Rotate video upside down
-    //        let videoNode = SCNNode(geometry: plane)
-    //        videoNode.eulerAngles.x = -.pi / 2
-    //        videoNode.eulerAngles.y = .pi
-    //
-    //        node.addChildNode(videoNode)
-    //
-    //        let scene2d = MyVideoScene(size: bounds.size)
-    //        scene2d.backgroundColor = .clear
-    //        plane.firstMaterial?.diffuse.contents = scene2d
-    //
-    //        //self.sceneView.scene.rootNode.addChildNode(videoNode)
-    //    }
 
 }
