@@ -13,6 +13,7 @@
 		3929C4931E89EC2C00E00B60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3929C4921E89EC2C00E00B60 /* Assets.xcassets */; };
 		39D8DC1B1E8ADAE600386B05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39D8DC1A1E8ADAE600386B05 /* LaunchScreen.storyboard */; };
 		8B28266021273F68001518CE /* MuseoMarAnimacion.mov in Resources */ = {isa = PBXBuildFile; fileRef = 8B28265F21273F68001518CE /* MuseoMarAnimacion.mov */; };
+		8B29104421A79C47000B601B /* Bat.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8B29104321A79C46000B601B /* Bat.mp4 */; };
 		8B3240D02114D3B5009B6730 /* MANO_OJO.mov in Resources */ = {isa = PBXBuildFile; fileRef = 8B3240CF2114D3B5009B6730 /* MANO_OJO.mov */; };
 		8B47FDBF211D37C5006B747D /* MyVideoScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B47FDBE211D37C5006B747D /* MyVideoScene.swift */; };
 		8B47FDC5211D4371006B747D /* Fire.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8B47FDC4211D4371006B747D /* Fire.mp4 */; };
@@ -41,6 +42,7 @@
 		3929C4971E89EC2C00E00B60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39D8DC1A1E8ADAE600386B05 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B28265F21273F68001518CE /* MuseoMarAnimacion.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = MuseoMarAnimacion.mov; sourceTree = "<group>"; };
+		8B29104321A79C46000B601B /* Bat.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bat.mp4; sourceTree = "<group>"; };
 		8B3240CF2114D3B5009B6730 /* MANO_OJO.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = MANO_OJO.mov; sourceTree = "<group>"; };
 		8B47FDBE211D37C5006B747D /* MyVideoScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVideoScene.swift; sourceTree = "<group>"; };
 		8B47FDC4211D4371006B747D /* Fire.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fire.mp4; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 		8B3240CE2114D3A9009B6730 /* Videos */ = {
 			isa = PBXGroup;
 			children = (
+				8B29104321A79C46000B601B /* Bat.mp4 */,
 				8B28265F21273F68001518CE /* MuseoMarAnimacion.mov */,
 				8B8DEF81213042A70075DD50 /* MuseoMarAnimacionAlpha.mov */,
 				8B3240CF2114D3B5009B6730 /* MANO_OJO.mov */,
@@ -274,6 +277,7 @@
 				8B67BC99211FA42F00DD25DC /* heart.json in Resources */,
 				8B5F86C52118DE30006B24DB /* Plane.mov in Resources */,
 				8B96EB03212F25EA006EBC2C /* ROL_Connecting.json in Resources */,
+				8B29104421A79C47000B601B /* Bat.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
