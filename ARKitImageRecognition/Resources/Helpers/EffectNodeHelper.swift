@@ -36,4 +36,17 @@ class EffectNodeHelper: NSObject {
                                 }
                                 """)
     }
+    
+    static func getVerticalAlphaMaskShader() -> SKShader {
+        return SKShader(source: """
+                                void main() {
+                                  vec2 texCoords = v_tex_coord;
+                                  vec2 colorCoords = vec2(texCoords.x, (1.0 + texCoords.y) * 0.5);
+                                  vec2 alphaCoords = vec2(texCoords.x, texCoords.y * 0.5);
+                                  vec4 color = texture2D(u_texture, colorCoords);
+                                  float alpha = texture2D(u_texture, alphaCoords).r;
+                                  gl_FragColor = vec4(color.rgb, alpha);
+                                }
+                                """)
+    }
 }
