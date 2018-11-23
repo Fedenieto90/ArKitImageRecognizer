@@ -139,8 +139,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 if referenceImage.name == referenceImages.aficheMuseoMar {
                     VideoHelper.displayVideo(referenceImage: referenceImage,
                                              node: node,
-                                             video: videos.museoMarAficheAlpha,
-                                             videoExtension: videoExtension.mov)
+                                             video: Videos.museoMarAficheAlpha,
+                                             videoExtension: VideoExtension.mov)
                 }
             })
             

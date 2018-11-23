@@ -9,7 +9,7 @@
 import UIKit
 import ARKit
 
-struct videos {
+struct Videos {
     static let museoMarAficheAlpha = "MuseoMarAnimacionAlpha"
     static let musoMarAfiche = "MuseoMarAnimacion"
     static let manoOjo = "MANO_OJO"
@@ -17,7 +17,7 @@ struct videos {
     static let plane = "Plane"
 }
 
-struct videoExtension {
+struct VideoExtension {
     static let mov = "mov"
     static let mp4 = "mp4"
 }
