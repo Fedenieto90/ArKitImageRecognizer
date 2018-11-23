@@ -86,6 +86,52 @@ class VideoHelper: NSObject {
         loopVideo(videoPlayer: videoPlayer, node: node)
     }
     
+    /// Creates A Video Player As An SCNGeometries Diffuse Contents with alpha mask videos
+    
+    static func setupVideoOnNodeWithAlphaMask(_ node: SCNNode,
+                                              fromURL url: URL,
+                                              referenceImage: ARReferenceImage){
+        
+        //1. Create An SKVideoNode
+        var videoPlayerNode: SKVideoNode!
+        
+        //2. Create An AVPlayer With Our Video URL
+        let videoPlayer = AVPlayer(url: url)
+        
+        //3. Intialize The Video Node With Our Video Player
+        videoPlayerNode = SKVideoNode(avPlayer: videoPlayer)
+        
+        //4. Create A SpriteKitScene & Postion It
+        let spriteKitScene = SKScene(size: CGSize(width: 1024, height: 768))
+        spriteKitScene.scaleMode = .aspectFit
+        videoPlayerNode.position = CGPoint(x: spriteKitScene.size.width/2, y: spriteKitScene.size.height/2)
+        videoPlayerNode.size = spriteKitScene.size
+        spriteKitScene.backgroundColor = .clear
+        
+        // Flip video upside down
+        var transform = SCNMatrix4MakeRotation(Float(Double.pi), 0.0, 0.0, 1.0)
+        transform = SCNMatrix4Translate(transform, 1.0, 1.0, 0)
+        
+        // Flip video horizontally
+        videoPlayerNode.xScale = videoPlayerNode.xScale * -1
+        
+        //5. Alpha transparency
+        let effectNode = getAlphaEffectNode(videoPlayerNode: videoPlayerNode)
+        spriteKitScene.addChild(effectNode)
+        effectNode.addChild(videoPlayerNode)
+        
+        //6. Set The Nodes Geoemtry Diffuse Contenets To Our SpriteKit Scene
+        node.geometry?.firstMaterial?.diffuse.contents = spriteKitScene
+        node.geometry?.firstMaterial?.diffuse.contentsTransform = transform
+        
+        //7. Play The Video
+        videoPlayerNode.play()
+        videoPlayer.volume = 0
+        
+        //8. Loop Video
+        loopVideo(videoPlayer: videoPlayer, node: node)
+    }
+    
     // MARK: - Transparency
     
     static func getAlphaEffectNode(videoPlayerNode: SKVideoNode) -> SKEffectNode {

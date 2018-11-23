@@ -136,12 +136,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
              animation that limits the duration for which the plane visualization appears.
              */
             planeNode.runAction(self.imageHighlightAction, completionHandler: {
-                if referenceImage.name == referenceImages.handEye {
-                    VideoHelper.displayVideo(referenceImage: referenceImage,
-                                             node: node,
-                                             video: videos.fire,
-                                             videoExtension: videoExtension.mp4)
-                } else if referenceImage.name == referenceImages.aficheMuseoMar {
+                if referenceImage.name == referenceImages.aficheMuseoMar {
                     VideoHelper.displayVideo(referenceImage: referenceImage,
                                              node: node,
                                              video: videos.museoMarAficheAlpha,
